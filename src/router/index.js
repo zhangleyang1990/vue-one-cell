@@ -21,7 +21,7 @@ const route = new Router({
 
 route.beforeEach((to, from, next) => {
   if(to.meta.title){
-    document.title=to.meta.title
+    document.title='北京冬伊胜暖通'
   }
   if (to.matched.some(r => r.meta.required)) {
     console.log(to.fullPath)
