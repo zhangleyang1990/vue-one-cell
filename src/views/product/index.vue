@@ -24,7 +24,6 @@ export default {
       activeName: "lifeStore", //
       highPickAdv: [
         "/static/images/12.jpg",
-        "/static/images/18.jpg",
         "/static/images/1.jpg",
         "/static/images/15.jpg"
       ] // 精选头部广告

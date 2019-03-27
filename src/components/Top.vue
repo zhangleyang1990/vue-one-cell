@@ -24,10 +24,10 @@ export default {
     return {
       categoryActive: "/",
       category: [
-        { name: "首页", id: 0, path: "/" },
-        { name: "工程案例", id: 1, path: "/workJect" },
+        { name: "工程案例", id: 1, path: "/" },
+        { name: "关于我们", id: 0, path: "/workJect" },
         { name: "产品", id: 2, path: "/production" },
-        { name: "使用说明", id: 3, path: "/useInfo" }
+        // { name: "使用说明", id: 3, path: "/useInfo" }
       ]
     };
   },

@@ -1,18 +1,13 @@
 <template>
   <div class="project-page">
-    <div v-for="(item,index) in projectList" :key="index">
-      <div class="project-top">
-        <div class="project-top__text">{{item.name}}项目</div>
-      </div>
-      <div class="peoject-photo">
-        <img
-          v-for="(only,index) in item.photo"
-          :key="index"
-          :src="only"
-          :alt="item.name"
-          ref="projectPhoto"
-        >
-      </div>
+    <div
+      class="project-page__item"
+      v-for="(item,index) in projectList"
+      :key="index"
+      @click="handleGoProjectDetail(item.type)"
+    >
+      <img :src="item.photo" :alt="item.photo">
+      <div>{{item.name}}</div>
     </div>
   </div>
 </template>
@@ -23,62 +18,94 @@ export default {
     return {
       projectList: [
         {
-          name: "海淀区军事基地",
-          photo: ["/static/images/13.jpg"]
+          name: "北七家土沟",
+          photo: "/static/images/qijia-1.jpg",
+          type: "qijia"
         },
         {
-          name: "海淀西二旗领袖新硅谷",
-          photo: ["/static/images/6.jpg", "/static/images/8.jpg"]
+          name: "阎村",
+          photo: "/static/images/yancun-1.jpg",
+          type: "yancun"
         },
         {
-          name: "朝阳望京国风上观",
-          photo: [ "/static/images/3.jpg"]
+          name: "首奕溪谷",
+          photo: "/static/images/xigu-1.jpg",
+          type: "xigu"
         },
         {
-          name: "丰台宋家庄地区",
-          photo: ["/static/images/4.jpg", "/static/images/20.jpg"]
+          name: "丽都壹号",
+          photo: "/static/images/lidu-1.jpg",
+          type: "lidu"
         },
         {
-          name: "大兴小红门地区",
-          photo: ["/static/images/7.jpg", "/static/images/9.jpg"]
+          name: "环湖小镇",
+          photo: "/static/images/huanhu-1.jpg",
+          type: "huanhu"
         },
         {
-          name: "顺义孙河地区",
-          photo: ["/static/images/10.jpg", "/static/images/11.jpg"]
+          name: "鸿博家园",
+          photo: "/static/images/hongbo-1.jpg",
+          type: "hongbo"
+        },
+        {
+          name: "新华联北区32号",
+          photo: "/static/images/hualian-1.jpg",
+          type: "hualian"
+        },
+        {
+          name: "半岛国际",
+          photo: "/static/images/bandao-1.jpg",
+          type: "bandao"
+        },
+        {
+          name: "橙色时代",
+          photo: "/static/images/chengse-1.jpg",
+          type: "chengse"
+        },
+        {
+          name: "果园小区",
+          photo: "/static/images/guoyuan-1.jpg",
+          type: "guoyuan"
         }
       ]
     };
   },
+  methods: {
+    handleGoProjectDetail(e) {
+      this.$router.push({
+        path: "/project/detail",
+        query: {
+          type: e
+        }
+      });
+    }
+  },
   mounted() {
-    this.$refs.projectPhoto.forEach(item => {
-      item.style =
-        "width:" + (item.naturalWidth * 500) / item.naturalHeight + "px";
-    });
+    // this.$refs.projectPhoto.forEach(item => {
+    //   item.style =
+    //     "width:" + (item.naturalWidth * 500) / item.naturalHeight + "px";
+    // });
   }
 };
 </script>
 <style lang="scss" scoped>
-.project-page{
+.project-page {
   margin-top: 10px;
-}
-.project-top {
-  height: 50px;
-  background-color: rgb(74, 81, 173);
-  color: white;
-  line-height: 50px;
-  margin-bottom: 10px;
-  .project-top__text {
-    width: 1620px;
-    margin: 0 auto;
-    font-size: 18px;
-  }
-}
-.peoject-photo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.project-page__item {
+  padding: 10px;
+  height: 230px;
+  width: 180px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  margin-left: 30px;
+  margin-bottom: 30px;
   img {
-    margin-bottom: 10px;
+    height: 180px;
+    width: 180px;
   }
 }
 </style>
